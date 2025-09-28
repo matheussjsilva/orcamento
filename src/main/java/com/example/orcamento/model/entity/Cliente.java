@@ -3,16 +3,20 @@ package com.example.orcamento.model.entity;
 import java.util.List;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "cliente")
 public class Cliente {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_id_gen")
-    @SequenceGenerator(name = "usuario_id_gen", sequenceName = "user_id_s", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cliente_id_gen")
+    @SequenceGenerator(name = "cliente_id_gen", sequenceName = "cliente_id_s", allocationSize = 1)
     @Column(name = "id_cliente")
     private Long idCliente;
 
