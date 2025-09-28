@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -18,9 +20,10 @@ public class ItemOrcamento {
     @Column(name = "id_item")
     private Long idItem;
 
-    @Column(name = "id_orcamento")
-    private Long idOrcamento;
-
+    /*
+     * @Column(name = "id_orcamento")
+     * private Long idOrcamento;
+     */
     @Column(name = "id_produto")
     private Long idProduto;
 
@@ -32,6 +35,10 @@ public class ItemOrcamento {
 
     @Column(name = "sub_total")
     private double subTotal;
+
+    @ManyToOne
+    @JoinColumn(name = "id_orcamento")
+    private Orcamento orcamento;
 
     public ItemOrcamento() {
 
@@ -51,14 +58,6 @@ public class ItemOrcamento {
 
     public void setIdItem(Long idItem) {
         this.idItem = idItem;
-    }
-
-    public Long getIdOrcamento() {
-        return idOrcamento;
-    }
-
-    public void setIdOrcamento(Long idOrcamento) {
-        this.idOrcamento = idOrcamento;
     }
 
     public Long getIdProduto() {
@@ -91,6 +90,10 @@ public class ItemOrcamento {
 
     public void setSubTotal(double subTotal) {
         this.subTotal = subTotal;
+    }
+
+    public Orcamento getOrcamento() {
+        return orcamento;
     }
 
 }

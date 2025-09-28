@@ -24,13 +24,20 @@ public class Orcamento {
     @Column(name = "id_orcamento")
     private Long idOrcamento;
 
+    @Column(name = "data")
     private LocalDate data;
 
+    @Column(name = "valor_total")
     private double valorTotal;
-
-    private Long idCliente;
-
-    private Long custoFixoId;
+    /*
+     * 
+     * @Column(name = "id_cliente")
+     * private Long idCliente;
+     * 
+     * 
+     * @Column(name = "custo_fixo_id")
+     * private Long custoFixoId;
+     */
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
@@ -47,12 +54,12 @@ public class Orcamento {
         this.data = LocalDate.now();
     }
 
-    public Orcamento(Long idOrcamento, LocalDate data, double valorTotal, Long idCliente, Long custoFixoId) {
+    public Orcamento(Long idOrcamento, LocalDate data, double valorTotal, Long idCliente) {
         this.idOrcamento = idOrcamento;
         this.data = data;
         this.valorTotal = valorTotal;
-        this.idCliente = idCliente;
-        this.custoFixoId = custoFixoId;
+        // this.idCliente = idCliente;
+        // this.custoFixoId = custoFixoId;
 
     }
 
@@ -80,20 +87,12 @@ public class Orcamento {
         this.valorTotal = valorTotal;
     }
 
-    public Long getIdCliente() {
-        return idCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setIdCliente(Long idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public Long getCustoFixoId() {
-        return custoFixoId;
-    }
-
-    public void setCustoFixoId(Long custoFixoId) {
-        this.custoFixoId = custoFixoId;
+    public CustoFixo getCustoFixo() {
+        return custoFixo;
     }
 
 }

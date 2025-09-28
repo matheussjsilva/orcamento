@@ -1,7 +1,5 @@
 package com.example.orcamento.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,21 +19,27 @@ public class CustoFixoItem {
     @SequenceGenerator(name = "custo_fixo_item_id_gen", sequenceName = "custo_fixo_id_s", allocationSize = 1)
     @Column(name = "id")
     private Long id;
-    private String descricao;
-    private double valor;
-    private Long custoFixoId;
 
+    @Column(name = "descricaos")
+    private String descricao;
+
+    @Column(name = "valor")
+    private double valor;
+    /*
+     * @Column(name = "custo_fixo_id")
+     * private Long custoFixoId;
+     */
     @ManyToOne
-    @JoinColumn(name = "id_custo")
+    @JoinColumn(name = "custo_fixo_id")
     private CustoFixo custoFixo;
 
     public CustoFixoItem() {
     }
 
-    public CustoFixoItem(String descricao, double valor, Long custoFixoId) {
+    public CustoFixoItem(String descricao, double valor) {
         this.descricao = descricao;
         this.valor = valor;
-        this.custoFixoId = custoFixoId;
+        // this.custoFixoId = custoFixoId;
     }
 
     public Long getId() {
@@ -62,12 +66,8 @@ public class CustoFixoItem {
         this.valor = valor;
     }
 
-    public Long getCustoFixoId() {
-        return custoFixoId;
-    }
+    public CustoFixo getCustoFixo() {
 
-    public void setCustoFixoId(Long custoFixoId) {
-        this.custoFixoId = custoFixoId;
+        return custoFixo;
     }
-
 }
