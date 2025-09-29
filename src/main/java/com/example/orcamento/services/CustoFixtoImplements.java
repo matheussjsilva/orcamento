@@ -14,7 +14,11 @@ public class CustoFixtoImplements implements CustoFixoService {
     @Override
     public CustoFixo salvarCustoFixo(CustoFixoRequestDTO request) {
 
-        return null;
+        CustoFixo custoFixo = new CustoFixo(request.getIdCusto(), request.getMesReferencia());
+
+        custoFixoRepository.save(custoFixo);
+
+        return custoFixo;
     }
 
 }

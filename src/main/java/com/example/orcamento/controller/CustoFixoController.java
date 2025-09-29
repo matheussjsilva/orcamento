@@ -1,33 +1,29 @@
 package com.example.orcamento.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.orcamento.model.dto.CustoFixoRequestDTO;
 import com.example.orcamento.model.entity.CustoFixo;
-import com.example.orcamento.services.OrcamentoService;
+import com.example.orcamento.services.CustoFixoService;
 
 @RestController
-@RequestMapping(path = "/api/orcamento")
-public class OrcamentoController {
+@RequestMapping(path = "/api/custoFixo")
+public class CustoFixoController {
 
-    @Autowired
-    private OrcamentoService orcamentoService;
+    private CustoFixoService custoFixoService;
 
-    @GetMapping(path = "/teste")
+    @PostMapping(path = "/salvar")
     @ResponseBody
-    public String testeApi(@RequestParam String nome) {
+    public ResponseEntity<CustoFixo> salvarCusto(@RequestBody CustoFixoRequestDTO request) {
 
-        String teste = orcamentoService.testeApi(nome);
+        CustoFixo calculaCustoFixo = custoFixoService.salvarCustoFixo(request);
 
-        return teste;
+        return ResponseEntity.ok(calculaCustoFixo);
     }
 
 }
