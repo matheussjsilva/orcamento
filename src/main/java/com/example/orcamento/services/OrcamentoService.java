@@ -7,4 +7,6 @@ public interface OrcamentoService {
 
     Orcamento calcularOrcamento(CalculaOrcamentoRequestDTO request);
 
+    String testeApi(String request);
+
 }
